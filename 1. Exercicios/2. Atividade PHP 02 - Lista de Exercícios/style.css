@@ -1,0 +1,14 @@
+.tabuada{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 10px;
+    width: 80%;
+    
+}
+.tb{
+    margin-bottom: 20px;
+    margin-left: 50px;
+    border: 1px solid black;
+    width: 130px;
+}
