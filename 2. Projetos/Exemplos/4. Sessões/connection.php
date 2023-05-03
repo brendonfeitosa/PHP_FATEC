@@ -15,5 +15,5 @@ $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if(!$conn) {
     die('Falhou a conexão com o banco de dados MySQL: '. mysqli_connect_errno());
 }
-echo "Conexão bem sucessedida!";
+/* echo "Conexão bem sucessedida!"; */
 ?>

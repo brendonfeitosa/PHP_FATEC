@@ -1,5 +1,33 @@
 <?php
 require("header-inc.php");
+
+if(isset($_POST['enviar'])) {
+	$nome = $_POST['nome'];
+	$email = $_POST['email'];
+	$datanasc = $_POST['datanasc'];
+	require_once('connection.php');
+
+	// MySQL query para inserir dados na tabela como insert into do SQL
+	$mysql_query = "INSERT INTO contatos (nome, email, datanasc) VALUES ('{$nome}', '{$email}', '{$datanasc}')";
+	echo $mysql_query;
+	$result = $conn->query($mysql_query); //vai executar o comando acima e incluir na tabela.
+
+	if($result === true) {
+		$msg = "insert success";
+		$msgerror = "";
+	}
+	else {
+		$msg = "insert error";
+		$msgerror = $conn->error;
+	}
+
+	//fechar a conexão
+	mysqli_close($conn); //tenho que fechar a conexão, pois o banco de dados é limitado ao número de conexões
+
+	header("Location: contatos.php?msg={$msg}&msgerror={$msgerror}");
+
+
+}
 ?>
 
 <div class="container">
