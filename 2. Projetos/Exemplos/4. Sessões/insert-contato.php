@@ -5,6 +5,9 @@ if(isset($_POST['enviar'])) {
 	$nome = $_POST['nome'];
 	$email = $_POST['email'];
 	$datanasc = $_POST['datanasc'];
+
+	//fazer uma validação em PHP para ver se os dados estão preenchidos
+
 	require_once('connection.php');
 
 	// MySQL query para inserir dados na tabela como insert into do SQL
@@ -12,7 +15,7 @@ if(isset($_POST['enviar'])) {
 	echo $mysql_query;
 	$result = $conn->query($mysql_query); //vai executar o comando acima e incluir na tabela.
 
-	if($result === true) {
+	if($result === true) { //retorna se o dado foi inserido não
 		$msg = "insert success";
 		$msgerror = "";
 	}

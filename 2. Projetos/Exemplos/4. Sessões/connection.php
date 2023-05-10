@@ -13,7 +13,7 @@ $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 //testar se a conexão falhou
 
 if(!$conn) {
-    die('Falhou a conexão com o banco de dados MySQL: '. mysqli_connect_errno());
+    die('Falhou a conexão com o banco de dados MySQL: '. mysqli_connect_errno()); //testa para ver se o banco foi acessado
 }
 /* echo "Conexão bem sucessedida!"; */
 ?>

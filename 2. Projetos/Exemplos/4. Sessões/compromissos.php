@@ -1,12 +1,15 @@
 <?php
 require("header-inc.php");
-
 //Selecionar a tabela
 
 require_once('connection.php');
 
+
+
 //MySQL query seleciona dados da tabela.
-$mysql_query = "SELECT * FROM contatos ORDER BY id";//comando para buscar dados da tabela
+$mysql_query = "SELECT cp.id idcomp, cp.descricao descricao, cp.data_inicio data_inicio, cp.duracao duracao, 
+cp.nomecontato nomecontato FROM contatos c, compromissos cp
+        WHERE cp.idcontato = c.id ORDER BY cp.id";;//comando para buscar dados da tabela
 $result = $conn->query($mysql_query);//executou o comando e pegou os dados
 
 //fechar a conxão
@@ -36,9 +39,8 @@ mysqli_close($conn);
       ?>
       <tr> 
         <th scope="row" style="text-align:center"><?php $data['id'];?></th>
-        <td><?= $data['nome'] ?></td> <!-- esta associando campos do array -->
-        <td><?= $data['email'] ?></td> <!-- esta associando campos do array -->
-        <td style="text-align:center"><?php echo date('d/m/Y', strtotime($data['datanasc'])); ?></td> <!-- esta associando campos do array -->
+        <td><?= $data['descricao'] ?></td> <!-- esta associando campos do array -->
+        <td style="text-align:center"><?php echo date('d/m/Y', strtotime($data['data_inicio'])); ?></td> <!-- esta associando campos do array -->
         <td style="text-align:center">
           <a href="update-contato.php?id=<?= $data['id'] ?>">
             <button type="button" class="btn btn-primary">Editar</button></a>
